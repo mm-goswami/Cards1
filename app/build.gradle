@@ -16,13 +16,74 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // android support libraries
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.androidx"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.androidx"
+    implementation "androidx.cardview:cardview:$rootProject.androidx"
+    implementation "com.google.android.material:material:$rootProject.androidx"
+
+    implementation "android.arch.lifecycle:runtime:$project.archVersion"
+    implementation "android.arch.lifecycle:extensions:$project.archVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$project.archVersion"
+
+    // card stack view lib
+    implementation "com.yuyakaido.android:card-stack-view:$rootProject.cardStackVersion"
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageVersion"
+
+    //picasso
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.rertrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.rertrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp3LoggerVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.rxJavaAdapter"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJava"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxJavaAndroid"
+    implementation "com.jakewharton.rxbinding2:rxbinding:$rootProject.rxJavaBinding"
+
+    // parser
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
+    implementation 'javax.inject:javax.inject:1'
+
+    // code generator for view
+    implementation "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
+
+    // dependencies for local unit tests
+    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+    //Mockito
+    testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+
+    // UI Testing
+    androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$rootProject.espressoVersion"
 }
+
+configurations.all {
+    resolutionStrategy.force "com.android.support:support-annotations:$supportLibraryVersion"
+}
+

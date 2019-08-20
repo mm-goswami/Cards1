@@ -1,7 +1,8 @@
-package com.manmohan.cards;
+package com.manmohan.cards.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import com.manmohan.cards.R;
 
 public class MainActivity extends AppCompatActivity {
 
