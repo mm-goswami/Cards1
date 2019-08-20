@@ -2,7 +2,7 @@ package com.manmohan.cards.di.component;
 
 import com.manmohan.cards.di.PerActivity;
 import com.manmohan.cards.di.module.ActivityModule;
-import com.manmohan.cards.ui.MainActivity;
+import com.manmohan.cards.ui.main.MainActivity;
 import dagger.Component;
 
 /**

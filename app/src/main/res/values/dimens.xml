@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="large_margin">24dp</dimen>
+  <dimen name="small_margin">8dp</dimen>
+  <dimen name="mid_margin">8dp</dimen>
+
+  <dimen name="small_textsize">12sp</dimen>
+  <dimen name="mid_textsize">18sp</dimen>
+  <dimen name="large_textsize">24sp</dimen>
+
+  <dimen name="user_icon_size">164dp</dimen>
+  <dimen name="action_bt_size">48dp</dimen>
+</resources>
