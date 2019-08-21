@@ -3,6 +3,7 @@ package com.manmohan.cards.di.module;
 import android.content.Context;
 import androidx.appcompat.app.AppCompatActivity;
 import com.manmohan.cards.di.ActivityContext;
+import com.yuyakaido.android.cardstackview.CardStackLayoutManager;
 import dagger.Module;
 import dagger.Provides;
 
@@ -11,9 +12,6 @@ import dagger.Provides;
  */
 @Module
 public class ActivityModule {
-
-  private static final int KB = 1024;
-  private static final int ONE_QUARTER = 4;
 
   private AppCompatActivity mActivity;
 
@@ -31,4 +29,10 @@ public class ActivityModule {
   Context provideContext() {
     return mActivity;
   }
+
+  @Provides
+  CardStackLayoutManager provideCardStackLayoutManager(){
+    return new CardStackLayoutManager(mActivity);
+  }
+
 }

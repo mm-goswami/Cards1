@@ -14,7 +14,7 @@
         />
     <variable
         type="boolean"
-        name="isConnect"
+        name="isAccept"
         />
     <variable
         type="boolean"
@@ -68,7 +68,7 @@
             android:layout_margin="@dimen/mid_margin"
             android:gravity="center"
             android:padding="@dimen/small_margin"
-            android:text="@{user.name.title.concat(@string/space)+result.name.first.concat(@string/space)+result.name.last}"
+            android:text="@{user.name.title.concat(@string/space) + user.name.first.concat(@string/space)+user.name.last}"
             android:textColor="@color/user_name"
             android:textSize="@dimen/large_textsize"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,13 +95,11 @@
             android:layout_width="@dimen/action_bt_size"
             android:layout_height="@dimen/action_bt_size"
             android:layout_margin="@dimen/large_margin"
-            android:background="@drawable/decline_bg"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toStartOf="@+id/accept_img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description_tx"
-            app:selected="@{isDecline}"
-            tools:background="@drawable/decline_unselect"
+            android:background="@{isDecline?@drawable/decline_select:@drawable/decline_unselect}"
             />
         <TextView
             android:id="@+id/decline_txt"
@@ -110,6 +108,7 @@
             android:gravity="center"
             android:text="@string/decline"
             android:textSize="@dimen/mid_textsize"
+            android:maxLines="3"
             app:layout_constraintEnd_toEndOf="@+id/decline_img"
             app:layout_constraintStart_toStartOf="@+id/decline_img"
             app:layout_constraintTop_toBottomOf="@+id/decline_img"
@@ -121,14 +120,11 @@
             android:layout_height="@dimen/action_bt_size"
             android:layout_gravity="center"
             android:layout_margin="@dimen/large_margin"
-            android:background="@drawable/accept_bg"
             android:scaleType="centerCrop"
-            android:selection="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/decline_img"
             app:layout_constraintTop_toBottomOf="@+id/description_tx"
-            app:selected="@{isConnect}"
-            tools:background="@drawable/accept_select"
+            android:background="@{isAccept ? @drawable/accept_select:@drawable/accept_unselect}"
             />
         <TextView
             android:id="@+id/accept_text"
@@ -143,6 +139,45 @@
             />
 
       </androidx.constraintlayout.widget.ConstraintLayout>
+      <FrameLayout
+          android:id="@+id/left_overlay"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          tools:visibility="invisible"
+          >
+
+        <ImageView
+            android:layout_width="@dimen/action_overlay_size"
+            android:layout_height="@dimen/action_overlay_size"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/large_margin"
+            android:background="@drawable/decline_select"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            />
+
+      </FrameLayout>
+      <FrameLayout
+          android:id="@+id/right_overlay"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          tools:visibility="invisible"
+          >
+
+        <ImageView
+            android:layout_width="@dimen/action_overlay_size"
+            android:layout_height="@dimen/action_overlay_size"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/large_margin"
+            android:background="@drawable/accept_select"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/decline_img"
+            app:layout_constraintTop_toBottomOf="@+id/description_tx"
+            />
+
+      </FrameLayout>
     </androidx.cardview.widget.CardView>
+
   </FrameLayout>
 </layout>

@@ -1,19 +1,36 @@
 package com.manmohan.cards.data.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "user_table")
 public class User {
   public String gender;
+  @Embedded
   public Name name;
+  @Embedded
   public Location location;
+  @PrimaryKey
+  @NonNull
   public String email;
+  @Embedded
   public Login login;
+  @Embedded
   public Dob dob;
+  @Embedded
   public Registered registered;
   public String phone;
   public String cell;
+  @Embedded
   public Id id;
+  @Embedded
   public Picture picture;
   public String nat;
+  public Boolean isDecline = false;
+  public Boolean isAccept = false;
 
   public static class Coordinates {
     public String latitude;
@@ -23,7 +40,7 @@ public class User {
 
   public static class Dob {
     public String date;
-    public Integer age;
+    public String age;
   }
   public static class Id {
     public String name;
@@ -32,8 +49,8 @@ public class User {
 
   public static class Info {
     public String seed;
-    public Integer results;
-    public Integer page;
+    public String results;
+    public String page;
     public String version;
   }
 
@@ -42,8 +59,10 @@ public class User {
     public String street;
     public String city;
     public String state;
-    public Integer postcode;
+    public String postcode;
+    @Embedded
     public Coordinates coordinates;
+    @Embedded
     public Timezone timezone;
   }
 
@@ -70,11 +89,13 @@ public class User {
   }
 
   public static class Registered {
-    public String date;
-    public Integer age;
+    @SerializedName("date")
+    public String registeredDate;
+    @SerializedName("age")
+    public String registeredAge;
   }
 
-  public class Timezone {
+  public static class Timezone {
     public String offset;
     public String description;
 

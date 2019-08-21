@@ -2,6 +2,7 @@ package com.manmohan.cards.di.component;
 
 import android.app.Application;
 import android.content.Context;
+import androidx.lifecycle.ViewModelProvider;
 import com.manmohan.cards.MainApplication;
 import com.manmohan.cards.data.DataManager;
 import com.manmohan.cards.di.ApplicationContext;
@@ -27,5 +28,8 @@ public interface ApplicationComponent {
   DataManager getDataManager();
 
   OkHttpClient getOkHttpClient();
+
+
+  ViewModelProvider.Factory getViewModelFactory();
 
 }

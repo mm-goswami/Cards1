@@ -1,19 +1,15 @@
 package com.manmohan.cards;
 
 import android.app.Application;
-import com.manmohan.cards.data.DataManager;
 import com.manmohan.cards.di.component.ApplicationComponent;
 import com.manmohan.cards.di.component.DaggerApplicationComponent;
 import com.manmohan.cards.di.module.ApplicationModule;
-import javax.inject.Inject;
 
 /**
  * Created by manmohan goswami
  */
 
 public class MainApplication extends Application {
-  @Inject
-  DataManager mDataManager;
 
   private ApplicationComponent mApplicationComponent;
 

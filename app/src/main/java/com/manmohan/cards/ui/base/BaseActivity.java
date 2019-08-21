@@ -1,30 +1,18 @@
 package com.manmohan.cards.ui.base;
 
 import android.annotation.TargetApi;
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-import androidx.annotation.DrawableRes;
+import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import com.manmohan.cards.MainApplication;
-import com.manmohan.cards.R;
 import com.manmohan.cards.di.component.ActivityComponent;
 import com.manmohan.cards.di.component.DaggerActivityComponent;
 import com.manmohan.cards.di.module.ActivityModule;
-import com.manmohan.cards.utils.CommonTools;
 
 /**
  * Created by manmohan.
@@ -46,7 +34,7 @@ public abstract class BaseActivity<B extends ViewDataBinding> extends AppCompatA
                 .build();
     }
 
-    abstract int getLayoutId();
+    @LayoutRes public abstract int getLayoutId();
 
     public ActivityComponent getActivityComponent() {
         return mActivityComponent;
