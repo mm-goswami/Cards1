@@ -20,7 +20,6 @@ public class AppDataManager implements DataManager {
   private final DatabaseManager mDatabaseManager;
   private final ConnectivityManager mConnectivityManager;
 
-
   @Inject
   public AppDataManager(AppApiManager apiManager, DatabaseManager databaseManager, ConnectivityManager connectivityManager) {
     mApiManager = apiManager;
@@ -29,7 +28,7 @@ public class AppDataManager implements DataManager {
   }
 
   @Override public Observable<List<User>> getUserList() {
-    if(!isNetworkConnected(mConnectivityManager))
+    if(!isNetworkConnected())
       return mDatabaseManager.getAllUser();
     else
       return mApiManager.getUserList()
@@ -41,8 +40,8 @@ public class AppDataManager implements DataManager {
     mDatabaseManager.saveUserAction(user, isAccept);
   }
 
-  public static boolean isNetworkConnected(final ConnectivityManager cm) {
-    final NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+  public boolean isNetworkConnected() {
+    final NetworkInfo activeNetwork = mConnectivityManager.getActiveNetworkInfo();
     return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
   }
 }

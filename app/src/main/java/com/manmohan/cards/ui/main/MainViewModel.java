@@ -5,13 +5,14 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import com.manmohan.cards.data.DataManager;
 import com.manmohan.cards.data.model.User;
 import io.reactivex.disposables.Disposable;
 import java.util.List;
 import javax.inject.Inject;
 
-public class MainViewModel extends AndroidViewModel {
+public class MainViewModel extends ViewModel {
 
   private final MutableLiveData<Boolean> isLoadingData = new MutableLiveData<>();
   private final MutableLiveData<String> showError = new MutableLiveData<>();
@@ -22,8 +23,7 @@ public class MainViewModel extends AndroidViewModel {
   Disposable disposable;
 
   @Inject
-  public MainViewModel(@NonNull final Application application, DataManager dataManager) {
-    super(application);
+  public MainViewModel(DataManager dataManager) {
     this.dataManager = dataManager;
     reloadUserList();
   }
@@ -56,11 +56,11 @@ public class MainViewModel extends AndroidViewModel {
 
   }
 
-  LiveData<Boolean> getIsLoadingCartData() {
+  public LiveData<Boolean> getIsLoading() {
     return isLoadingData;
   }
 
-  LiveData<List<User>> getUserList() {
+  public LiveData<List<User>> getUserList() {
     return userData;
   }
 }

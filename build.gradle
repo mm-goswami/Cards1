@@ -52,6 +52,7 @@ ext {
 
     //Test dependencies
     mockitoVersion = '2.5.0'
+    jraskaTestVersion = '0.2.1'
     junitVersion = '4.12'
     espressoVersion = '3.1.0'
 }

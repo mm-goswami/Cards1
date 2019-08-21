@@ -15,6 +15,7 @@ import com.yuyakaido.android.cardstackview.Direction;
 import com.yuyakaido.android.cardstackview.Duration;
 import com.yuyakaido.android.cardstackview.StackFrom;
 import com.yuyakaido.android.cardstackview.SwipeAnimationSetting;
+import com.yuyakaido.android.cardstackview.SwipeableMethod;
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> implements UserAdapter.UserCallback{
@@ -37,6 +38,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements U
     viewModel = ViewModelProviders.of(this, viewModelFactory)
         .get(MainViewModel.class);
 
+    cardStackLayoutManager.setSwipeableMethod(SwipeableMethod.AutomaticAndManual);
     cardStackLayoutManager.setStackFrom(StackFrom.Bottom);
     binding.cardStackView.setLayoutManager(cardStackLayoutManager);
     binding.cardStackView.setAdapter(adapter);
@@ -92,7 +94,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements U
   }
 
   private void subscribeLoading(final MainViewModel viewModel) {
-    viewModel.getIsLoadingCartData().observe(this, this::showLoading);
+    viewModel.getIsLoading().observe(this, this::showLoading);
   }
 
   private void showLoading(final boolean loading) {

@@ -80,6 +80,8 @@ dependencies {
   testImplementation "junit:junit:$rootProject.ext.junitVersion"
   //Mockito
   testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
+  testImplementation "com.jraska.livedata:testing:$rootProject.jraskaTestVersion"
+  testImplementation "android.arch.core:core-testing:$project.archVersion"
 
   // UI Testing
   androidTestImplementation "androidx.test.espresso:espresso-core:$rootProject.espressoVersion"
